@@ -1,6 +1,6 @@
 name := "cs434-project"
 organization in ThisBuild := "com.physicube"
-scalaVersion in ThisBuild := "2.11.12"
+scalaVersion in ThisBuild := "2.12.8"
 
 // PROJECTS
 
@@ -26,7 +26,15 @@ lazy val dependencies =
 
     }
 
+
+
 lazy val commonDependencies = Seq(
-    
+    "org.apache.logging.log4j" %% "log4j-api-scala" % "11.0",
+    "org.apache.logging.log4j" % "log4j-api" % "2.11.0",
+    "org.apache.logging.log4j" % "log4j-core" % "2.11.0" % Runtime,
+    "com.thesamet.scalapb" %% "scalapb-runtime" % scalapb.compiler.Version.scalapbVersion % "protobuf"
 )
 
+PB.targets in Compile := Seq(
+    scalapb.gen() -> (sourceManaged in Compile).value / "scalapb"
+)

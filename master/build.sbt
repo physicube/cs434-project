@@ -1,1 +1,1 @@
-mainClass in Compile := Some("master.Main")
+mainClass in Compile := Some("master.Master")
